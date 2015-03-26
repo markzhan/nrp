@@ -1,0 +1,22 @@
+{
+  "port": 8080,
+  "ssl": false,
+  "key": "./nrp-key.pem",
+  "cert": "./nrp-cert.pem",
+  "127.0.0.1": {
+    "host": "127.0.0.1",
+    "port": 3001
+  },
+  "localhost": {
+    "host": "127.0.0.1",
+    "port": 3002
+  },
+  "appmind.cn": {
+    "host": "127.0.0.1",
+    "port": 4567
+  },
+  "laozhan.net": {
+    "host": "127.0.0.1",
+    "port": 2368
+  }
+}
