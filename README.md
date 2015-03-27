@@ -3,7 +3,7 @@
 
 一个使用 Node.js 编写的反向代理服务器。
 
-极简风格，支持 HTTPS，支持子域名，支持多域名和多服务器。
+极简风格，支持 HTTPS，支持端口配置，支持子域名、多域名和多服务器。
 
 
 ## 安装
@@ -15,11 +15,17 @@ $ sudo npm install -g nrp
 
 ## 配置
 
-假设需要代理服务器运行在 80 端口，www 主站和 blog 子站分别运行在端口 3000 和端口 4000，配置文件如下：
+为了访问配置文件，需要知道 Node.js 环境的全局模块安装路径。
+```sh
+$ echo $NODE_PATH  # 查看环境变量
+$ npm root -g  # 查看全局模块路径
+$ npm get prefix  # 查看 prefix
+$ NRP_PATH=`npm root -g`  # 设置 nrp 路径环境变量
+```
+假设需要代理服务器运行在 80 端口，www 主站和 blog 子站分别运行在本机端口 3000 和端口 4000，配置文件如下：
 
 ```sh
-$ NODE_PATH=`npm root -g`
-$ vi $NODE_PATH/nrp/config.json
+$ vi $NRP_PATH/nrp/config.json
 ```
 ```js
 {
@@ -43,9 +49,9 @@ $ vi $NODE_PATH/nrp/config.json
 
 ## 密钥
 
-为使用 HTTPS，需要 SSL 密钥文件，nrp 内置了自签名的 SSL 密钥文件。
+为支持 HTTPS，需要 SSL 密钥文件，nrp 内置了自签名的 SSL 密钥文件。使用浏览器访问自签名 https 网站，需要选择信任。
 
-使用自己的密钥，请修改配置文件 config.json，也可以使用 openssl 重新生成自签名密钥。
+可以修改配置文件 config.json 使用自己的密钥，也可以使用 openssl 重新生成自签名密钥。方法如下：
 
 ```sh
 $ openssl genrsa -out nrp-key.pem 1024
@@ -78,6 +84,7 @@ script
     nrp 2>&1 >> /dev/null
 end script
 ```
+查看、启动或停止服务命令如下：
 ```sh
 $ sudo status nrp  # 查看状态
 $ sudo start nrp  # 启动服务

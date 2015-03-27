@@ -1,7 +1,7 @@
 {
   "name": "nrp",
-  "version": "0.0.1",
-  "description": "A reverse proxy server by node.js",
+  "version": "0.0.2",
+  "description": "A reverse proxy written with node.js",
   "main": "index.js",
   "scripts": {
     "test": "make test"
