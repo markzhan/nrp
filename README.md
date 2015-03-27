@@ -31,8 +31,8 @@ $ vi $NRP_PATH/nrp/config.json
 {
   "port": 8080,
   "ssl": false,
-  "key": "./nrp-key.pem",
-  "cert": "./nrp-cert.pem",
+  "key": "nrp-key.pem",
+  "cert": "nrp-cert.pem",
   "www.name.com": {
     "host": "127.0.0.1",
     "port": 3000
@@ -58,6 +58,8 @@ $ openssl genrsa -out nrp-key.pem 1024
 $ openssl req -new -key nrp-key.pem -out nrp-cert.csr
 $ openssl x509 -req -in nrp-cert.csr -signkey nrp-key.pem -out nrp-cert.pem
 ```
+注意：密钥文件的位置，实际路径是 `$NRP_PATH/nrp/lib/`。
+
 
 ## 启动
 ```sh
